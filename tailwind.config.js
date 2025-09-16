@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      aspectRatio: {
+        '1/2': '1/2',
+        '3/4': '3/4',
+      },
+    },
   },
   plugins: [],
 }

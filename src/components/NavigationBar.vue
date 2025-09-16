@@ -10,8 +10,8 @@
                 <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.369 4.369 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
               </svg>
             </div>
-            <span class="text-xl font-bold text-gray-800">{{ $t('navigationBar.name') }}</span>
-            <span class="text-sm text-gray-500">{{ $t('navigationBar.nameDescription') }}</span>
+            <span class="text-xl font-bold text-gray-800">{{ placeWord }}</span>
+            <span class="text-sm text-gray-500">{{ placeWord }}</span>
           </div>
         </div>
 
@@ -25,40 +25,40 @@
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
             </svg>
-            {{ $t('navigationBar.first') }}
+            {{ placeWord }}
           </router-link>
           
           <router-link 
-            to="/main" 
+            to="/" 
             class="nav-link"
             :class="{ 'active': $route.name === 'main' }"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
             </svg>
-            {{ $t('navigationBar.main') }}
+            {{ placeWord }}
           </router-link>
           
           <router-link 
-            to="/separate" 
+            to="/" 
             class="nav-link"
             :class="{ 'active': $route.name === 'Separate' }"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
             </svg>
-            {{ $t('navigationBar.separate') }}
+            {{ placeWord }}
           </router-link>
           
           <router-link 
-            to="/about" 
+            to="/" 
             class="nav-link"
             :class="{ 'active': $route.name === 'about' }"
           >
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            {{ $t('navigationBar.about') }}
+            {{ placeWord }}
           </router-link>
         </div>
         <!-- 语言切换 -->
@@ -95,11 +95,11 @@
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
             </svg>
-            {{ $t('navigationBar.first') }}
+            {{ placeWord }}
           </router-link>
           
           <router-link 
-            to="/main" 
+            to="/" 
             class="mobile-nav-link"
             :class="{ 'active': $route.name === 'main' }"
             @click="closeMobileMenu"
@@ -107,11 +107,11 @@
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
             </svg>
-            {{ $t('navigationBar.main') }}
+            {{ placeWord }}
           </router-link>
           
           <router-link 
-            to="/separate" 
+            to="/" 
             class="mobile-nav-link"
             :class="{ 'active': $route.name === 'Separate' }"
             @click="closeMobileMenu"
@@ -119,11 +119,11 @@
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
             </svg>
-            {{ $t('navigationBar.separate') }}
+            {{ placeWord }}
           </router-link>
           
           <router-link 
-            to="/about" 
+            to="/" 
             class="mobile-nav-link"
             :class="{ 'active': $route.name === 'about' }"
             @click="closeMobileMenu"
@@ -131,7 +131,7 @@
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-            {{ $t('navigationBar.about') }}
+            {{ placeWord }}
           </router-link>
         </div>
       </div>
@@ -145,7 +145,8 @@ export default {
   data() {
     return {
       mobileMenuOpen: false,
-      language: 'Language'
+      language: 'Language',
+      placeWord: 'Story',
     }
   },
   methods: {
