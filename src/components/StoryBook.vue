@@ -15,7 +15,7 @@
           :class="{'z-20': itemIndex === 0, 'page-back': itemIndex === 1}"
           >
             <img v-if="item.type === 'image'" :src="'https://r2.story.shiyin.cyou/' + item.path" alt="无法加载" 
-            class="w-full h-full absolute top-0 right-0 object-cover chapter-image" 
+            class="w-full h-full absolute top-0 right-0 object-cover bg-orange-300 chapter-image" 
             :class="{'chapter-image-back': itemIndex === 1}"
             @click="pageClick(index, itemIndex)"/>
             <div v-else-if="item.type === 'text'" class="w-full h-full absolute top-0 right-0 bg-orange-300 rounded-r-3xl p-8  " 
@@ -25,6 +25,7 @@
               <AudioPlayer 
               :src="'https://r2.story.shiyin.cyou/' + item.voice_path" 
               :index="index"
+              :ref="(el)=>setPlayerRef(index, el)"
               @click.stop=""
               class="mt-4"
               @play-ended="pageVoiceEnded(index)"/>
@@ -49,6 +50,15 @@ const currentPage = ref(-1)
 const lastPage = ref(0)
 // 记录目前哪一页z-index最大
 const topPage = ref(0)
+const playerRefs = ref([]);
+const isAutoPlay = ref(false)
+
+const setPlayerRef = (index, el) => {
+  if (el) {
+    playerRefs.value[index] = el
+  }
+}
+
 onMounted(() => {
   console.log(props.story)
   loadPages()
@@ -86,6 +96,7 @@ const loadPages = () => {
 }
 
 const pageClick = (index, itemIndex) => {
+  getLastPlayStatus(currentPage.value)
   lastPage.value = index
   if (itemIndex === 0) {
     pages.value[index].status = 'to-left'
@@ -102,6 +113,10 @@ const prevClick = (index) => {
   if (currentPage.value >= 0) {
     currentPage.value = index-1
   }
+  stopAllPlayers()
+  if(isAutoPlay.value) {
+    playOnePlayer(currentPage.value)
+  }
 }
 
 
@@ -109,11 +124,36 @@ const nextClick = (index) => {
   if (currentPage.value <= props.story.chapters.length) {
     currentPage.value = index+1
   }
+  stopAllPlayers()
+  if(isAutoPlay.value) {
+    playOnePlayer(currentPage.value)
+  }
+}
+
+const stopAllPlayers = () => {
+  playerRefs.value.forEach(player => {
+    player.pause()
+  })
+}
+
+const getLastPlayStatus = (index) => {
+  if(playerRefs.value[index]) {
+    isAutoPlay.value = playerRefs.value[index].getIsPlaying()
+  } else {
+    isAutoPlay.value = false
+  }
+}
+
+const playOnePlayer = (index) => {
+  console.log(playerRefs.value[index], index)
+  if(playerRefs.value[index]) {
+    playerRefs.value[index].start()
+  }
 }
 
 const pageVoiceEnded = (index) => {
-  if(index === currentPage) {
-    this.nextClick(index)
+  if(index === currentPage.value) {
+    pageClick(index, 0)
   }
 }
 

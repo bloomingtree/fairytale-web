@@ -153,6 +153,12 @@ export default {
             this.$refs.audio.currentTime = newTime
             this.timeUpdate(true)
         },
+        getIsPlaying() {
+            return this.isPlaying || Math.abs(this.playTime - this.totalTime) < 0.5
+        },
+        getPlayTime() {
+            return this.playTime
+        }
     },
     mounted() {
         if(this.src) {
@@ -170,5 +176,6 @@ export default {
         // 组件销毁前移除事件监听
         window.removeEventListener('keydown', this.handleKeyboard)
     },
+    
 }
 </script>

@@ -4,10 +4,10 @@
     <header class="bg-card shadow-sm border-b border-border">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-center text-balance">
-          📚 Storybook Library
+          📚 童话故事集
         </h1>
         <p class="text-muted-foreground text-center mt-2 text-base sm:text-lg max-w-2xl mx-auto">
-          Discover amazing stories and adventures from our curated collection
+          发现神奇的故事和冒险，从我们的精选收藏中
         </p>
       </div>
     </header>
@@ -18,7 +18,7 @@
       <div v-if="loading" class="flex justify-center items-center py-12 sm:py-16">
         <div class="flex flex-col items-center space-y-4">
           <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          <p class="text-muted-foreground text-sm">Loading amazing stories...</p>
+          <p class="text-muted-foreground text-sm">故事正在上新...</p>
         </div>
       </div>
 
@@ -71,7 +71,7 @@
     <footer class="bg-card border-t border-border mt-12 sm:mt-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div class="text-center text-muted-foreground text-sm">
-          <p>&copy; 2024 Storybook Library. Made with ❤️ for book lovers everywhere.</p>
+          <p>&copy; 2025 童话故事集</p>
         </div>
       </div>
     </footer>
