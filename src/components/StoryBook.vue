@@ -2,23 +2,6 @@
     <div 
       class="group rounded-lg h-full flex items-center justify-center relative"
     >
-      <div class="max-h-full shadow-lg absolute right-0 w-1/2 aspect-[3/4]"
-      :class="{'cover-container': currentPage >= 0}">
-        <!-- Book Cover Image -->
-        <div class="cover-spine absolute z-40 left-0 top-[-6%] h-[115%] w-[3%] bg-black/30 border-r-2 border-black/80"
-          :class="'bg-[url(https://r2.story.shiyin.cyou/'+story.image_path+')] bg-cover bg-left'">
-        </div>
-        <!-- <img 
-          :src="'https://r2.story.shiyin.cyou/' + story.image_path"
-          :alt="`${story.title}`"
-          class="cover-image relative w-[96%] h-full right-[-4%] object-cover z-50 border-y-4 border-r-4 border-cyan-600 rounded-r-3xl shadow-md shadow-black "
-          :class="{'w-full right-0 cover-image-flipped': currentPage >= 0}"
-          loading="lazy"
-        /> -->
-        <div class="z-10 absolute w-[95%] h-[4%] bottom-[-1.5%] left-0 border-cyan-600 bg-gradient-to-b from-[#d3dde3] via-[#f7fcfc] to-[#e2e8ed] rounded-r-3xl"></div>
-        <div class="-z-10 absolute w-[98%] h-full bottom-[-3%] left-0 border-y-4 border-r-4 border-cyan-600 rounded-r-3xl"
-          :class="'bg-[url(https://r2.story.shiyin.cyou/'+story.image_path+')] bg-cover bg-left'"></div>
-      </div>
       <div class="z-20 story-pages absolute w-full h-full top-0 right-0">
         <!-- 包含前后页 -->
         <div  v-for="(page, index) in pages" :key="index"
@@ -37,8 +20,14 @@
             @click="pageClick(index, itemIndex)"/>
             <div v-else-if="item.type === 'text'" class="w-full h-full absolute top-0 right-0 bg-orange-300 rounded-r-3xl p-8  " 
             @click="pageClick(index, itemIndex)">
+              <h2 class="text-2xl font-bold mb-4">{{ item.title }}</h2>
               <p class="indent-12 text-2xl text-left">{{ item.content }}</p>
-              <AudioPlayer :src="'https://r2.story.shiyin.cyou/' + item.voice_path" @click.stop="console.log('click')" />
+              <AudioPlayer 
+              :src="'https://r2.story.shiyin.cyou/' + item.voice_path" 
+              :index="index"
+              @click.stop=""
+              class="mt-4"
+              @play-ended="pageVoiceEnded(index)"/>
             </div>
           </div>
         </div>
@@ -122,6 +111,11 @@ const nextClick = (index) => {
   }
 }
 
+const pageVoiceEnded = (index) => {
+  if(index === currentPage) {
+    this.nextClick(index)
+  }
+}
 
 </script>
 
