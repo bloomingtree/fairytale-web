@@ -29,7 +29,7 @@
           <h3 class="text-lg font-semibold text-destructive mb-2">Oops! Something went wrong</h3>
           <p class="text-destructive/80 text-sm mb-4">{{ error }}</p>
           <button 
-            @click="fetchBooks" 
+            @click="fetchBooks(0)" 
             class="bg-primary text-primary-foreground px-6 py-2 rounded-md hover:bg-primary/90 transition-colors font-medium"
           >
             Try Again
@@ -91,20 +91,21 @@ const loading = ref(false)
 const error = ref(null)
 const currentPage = ref(0)
 const totalPages = ref(1)
-const booksPerPage = 10
+const pageSize = 10
 
 const router = useRouter()
 
 // Fetch books function
-const fetchBooks = async (page = 0) => {
+const fetchBooks = async (pageNum = 0) => {
   loading.value = true
   error.value = null
   
   try {
-    const response = await getStoryList(page, booksPerPage)
+    console.log('fetchBooks', pageNum, pageSize)
+    const response = await getStoryList(pageNum, pageSize)
     storyList.value = response.result.story
-    totalPages.value = Math.ceil(response.result.total/booksPerPage)
-    currentPage.value = page
+    totalPages.value = Math.ceil(response.result.total/pageSize)
+    currentPage.value = pageNum
   } catch (err) {
     error.value = 'Failed to load storybooks. Please try again.'
     console.error('Error fetching books:', err)
