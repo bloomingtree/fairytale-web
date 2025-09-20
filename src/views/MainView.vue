@@ -7,7 +7,7 @@
           📚 童话故事集
         </h1>
         <p class="text-muted-foreground text-center mt-2 text-base sm:text-lg max-w-2xl mx-auto">
-          发现神奇的故事和冒险，从我们的精选收藏中
+          从我们的精选收藏中，发现神奇的故事和冒险，培养想象力和阅读兴趣
         </p>
       </div>
     </header>

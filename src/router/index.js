@@ -10,7 +10,7 @@ const router = createRouter({
       name: 'main',
       component: MainView,
       meta: {
-        description: '免费音频音高分析工具，上传音频即可获取音符信息，采用Spotify Basic-Pitch技术，操作简单精准'
+        description: '精选童话故事网站，收录经典童话、寓言故事，为孩子们提供优质的阅读体验，培养想象力和阅读兴趣'
       }
     },
     {
@@ -24,11 +24,11 @@ const router = createRouter({
 // Update meta tags on route change
 router.afterEach((to) => {
   // Update page title
-  const title = to.meta.title || '识音 - 免费AI扒谱神器 | 歌曲音高分析工具'
+  const title = to.meta.title || '童话世界 - 精选童话故事网站 | 经典童话在线阅读'
   document.title = title
 
   // Update meta description
-  const description = to.meta.description || '免费音频音高分析工具，上传音频即可获取音符信息，采用Spotify Basic-Pitch技术'
+  const description = to.meta.description || '精选童话故事网站，收录经典童话、寓言故事，为孩子们提供优质的阅读体验，培养想象力和阅读兴趣'
   updateMetaTag('description', description)
 
   // Update Open Graph tags
