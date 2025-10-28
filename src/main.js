@@ -1,8 +1,3 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
-import router from './router'
-
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+// 已迁移到 SSR 架构，请使用 src/entry-client.js 作为浏览器入口
+// 保留文件以避免引用报错
+export {}
